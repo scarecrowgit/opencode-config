@@ -1,0 +1,984 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "9router/cc/claude-opus-5-5",
+  "small_model": "9router/cx/gpt-5.6-terra",
+  "default_agent": "driver",
+  "subagent_depth": 2,
+  "agent": {
+    "build": {
+      "model": "9router/cx/gpt-5.6-terra"
+    },
+    "plan": {
+      "model": "9router/cx/gpt-5.6-terra"
+    },
+    "general": {
+      "model": "9router/cx/gpt-5.6-terra"
+    },
+    "explore": {
+      "model": "9router/cx/gpt-5.6-terra"
+    },
+    "title": {
+      "model": "9router/cx/gpt-5.6-terra"
+    },
+    "summary": {
+      "model": "9router/cx/gpt-5.6-terra"
+    },
+    "compaction": {
+      "model": "9router/cx/gpt-5.6-terra"
+    }
+  },
+  "provider": {
+    "9router": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "9router",
+      "options": {
+        "baseURL": "http://100.81.7.123/v1",
+        "apiKey": "{file:~/.config/opencode/secrets/9router.key}"
+      },
+      "models": {
+        "ninfer/qwen3.8-27b": {
+          "name": "Qwen3.8 27B",
+          "limit": {
+            "context": 262144,
+            "output": 64000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": false,
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cc/claude-opus-5-5": {
+          "name": "Claude Opus 5 5",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cc/claude-opus-5": {
+          "name": "Claude Opus 5",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cc/claude-fable-5-1": {
+          "name": "Claude Fable 5 1",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cc/claude-fable-5": {
+          "name": "Claude Fable 5",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cc/claude-sonnet-5": {
+          "name": "Claude Sonnet 5",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cc/claude-haiku-4-5-20251001": {
+          "name": "Claude Haiku 4.5",
+          "limit": {
+            "context": 200000,
+            "output": 64000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cc/claude-opus-4-8": {
+          "name": "Claude Opus 4 8",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cc/claude-opus-4-6": {
+          "name": "Claude Opus 4 6",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.8-flash-high": {
+          "name": "Gemini 3.8 Flash High",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.8-flash-medium": {
+          "name": "Gemini 3.8 Flash Medium",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.8-flash-low": {
+          "name": "Gemini 3.8 Flash Low",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.8-flash": {
+          "name": "Gemini 3.8 Flash",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.7-flash-high": {
+          "name": "Gemini 3.7 Flash High",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.7-flash-medium": {
+          "name": "Gemini 3.7 Flash Medium",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.7-flash-low": {
+          "name": "Gemini 3.7 Flash Low",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.6-flash-high": {
+          "name": "Gemini 3.6 Flash High",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.6-flash-medium": {
+          "name": "Gemini 3.6 Flash Medium",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.6-flash-low": {
+          "name": "Gemini 3.6 Flash Low",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.5-flash-high": {
+          "name": "Gemini 3.5 Flash High",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3-flash-agent": {
+          "name": "Gemini 3 Flash Agent",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.5-flash-low": {
+          "name": "Gemini 3.5 Flash Low",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.5-flash-extra-low": {
+          "name": "Gemini 3.5 Flash Extra Low",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-pro-agent": {
+          "name": "Gemini Pro Agent",
+          "limit": {
+            "context": 1048576,
+            "output": 64000
+          },
+          "tool_call": true,
+          "reasoning": false,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3.1-pro-low": {
+          "name": "Gemini 3.1 Pro Low",
+          "limit": {
+            "context": 1048576,
+            "output": 65535
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/claude-sonnet-4-6": {
+          "name": "Claude Sonnet 4.6",
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/claude-opus-4-6-thinking": {
+          "name": "Claude Opus 4.6 (thinking)",
+          "limit": {
+            "context": 200000,
+            "output": 64000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gpt-oss-120b-medium": {
+          "name": "GPT OSS 120B Medium",
+          "limit": {
+            "context": 128000,
+            "output": 64000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": false,
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "ag/gemini-3-flash": {
+          "name": "Gemini 3 Flash",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-6-astra": {
+          "name": "GPT-6 Astra",
+          "limit": {
+            "context": 272000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.6-sol": {
+          "name": "GPT-5.6 Sol",
+          "limit": {
+            "context": 372000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.6-sol-review": {
+          "name": "GPT-5.6 Sol Review",
+          "limit": {
+            "context": 372000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.6-terra": {
+          "name": "GPT-5.6 Terra",
+          "limit": {
+            "context": 272000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.6-terra-review": {
+          "name": "GPT-5.6 Terra Review",
+          "limit": {
+            "context": 272000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.6-luna": {
+          "name": "GPT-5.6 Luna",
+          "limit": {
+            "context": 272000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.6-luna-review": {
+          "name": "GPT-5.6 Luna Review",
+          "limit": {
+            "context": 272000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.5": {
+          "name": "GPT-5.5",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.5-review": {
+          "name": "GPT-5.5 Review",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.4": {
+          "name": "GPT-5.4",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.4-review": {
+          "name": "GPT-5.4 Review",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.4-mini": {
+          "name": "GPT-5.4 Mini",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.4-mini-review": {
+          "name": "GPT-5.4 Mini Review",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.3-codex-spark": {
+          "name": "GPT-5.3 Codex Spark",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": false,
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-5.3-codex-spark-review": {
+          "name": "GPT-5.3 Codex Spark Review",
+          "limit": {
+            "context": 400000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": false,
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/codex-auto-review": {
+          "name": "Codex Auto Review",
+          "limit": {
+            "context": 200000,
+            "output": 64000
+          },
+          "tool_call": true,
+          "reasoning": false,
+          "attachment": false,
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-6-sol": {
+          "name": "GPT-6 Sol",
+          "limit": {
+            "context": 272000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-6-sol-review": {
+          "name": "GPT-6 Sol Review",
+          "limit": {
+            "context": 272000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "cx/gpt-6-luna": {
+          "name": "GPT-6 Luna",
+          "limit": {
+            "context": 272000,
+            "output": 128000
+          },
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+node_modules
+package.json
+package-lock.json
+bun.lock
+
+# secrets - never commit
+secrets/
+*.key
+.env
+.env.*
+
+# skills are symlinks into ~/.hermes (absolute paths, not portable)
+skills/
